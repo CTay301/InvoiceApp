@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+public class InvoiceApp {
+	
+	public static void main( String[] args ){
+		Scanner sc = new Scanner(System.in);
+    int counter, finish;
+    double Total,TaxRate, Tax,TaxPercent;
+		finish = 0;
+		
+		double myPrices[] = new double[100];
+		TaxRate = 0.0;
+	  System.out.println("What is the tax rate?");
+		TaxRate = sc.nextDouble();
+
+		counter = 0;	
+		do {
+                    	System.out.print("Enter price. To end input, type '0.0' ");
+				myPrices[counter] = sc.nextDouble();
+			
+			
+			if(myPrices[counter] == 0){
+				System.out.println("Your receipt is being calculated");
+				finish = 1;
+			}
+			counter +=1;
+		} while(finish == 0);
+		
+		
+		System.out.println("\n -------------- \n");
+		System.out.println("Receipt");
+		
+		Total = 0;
+		for(int i= 0; i < counter - 1; i++){
+			System.out.println(myPrices[i] + "(Price #"+ i+")");
+			Total += myPrices[i];
+		}
+		
+                TaxPercent = TaxRate * 0.01;
+		Tax = 0.01* Total * TaxRate;
+                
+		
+                System.out.println("Tax Rate: " + TaxPercent);
+		System.out.println(Total + "\t Subtotal");
+		System.out.println( Tax + "\t Tax");
+		System.out.println(Total + Tax + "\t Grand Total");
+		
+	}
+
+}
